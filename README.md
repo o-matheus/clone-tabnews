@@ -79,8 +79,8 @@ Na primeira pista lenta foi abordado a diferença entre o repositório local e r
 
 `git restore --staged nome-do-arquivo.js` -> Dessa forma consegumos tirar do stage um arquivo que fizemos o add por engano, antes de ser realizado o commit. 
 
-`git add -A` -> Adiciona todos os arquivos modificados, novos e deletados.
-`git add .` -> Adiciona todos os arquivos do diretório atual.
-`git add package*` -> Adiciona todos os arquivos que começam com `package`.
-`git add pages/*` -> Adiciona todos os arquivos dentro de uma pasta especifica.
+`git add -A` -> Adiciona todos os arquivos modificados, novos e deletados.  
+`git add .` -> Adiciona todos os arquivos do diretório atual.  
+`git add package*` -> Adiciona todos os arquivos que começam com `package`.  
+`git add pages/*` -> Adiciona todos os arquivos dentro de uma pasta especifica.  
 
