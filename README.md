@@ -84,3 +84,46 @@ Na primeira pista lenta foi abordado a diferença entre o repositório local e r
 `git add package*` -> Adiciona todos os arquivos que começam com `package`.  
 `git add pages/*` -> Adiciona todos os arquivos dentro de uma pasta especifica.  
 
+Caso tenha feito algum erro no commit é possível fazer um amend para realizar uma alteração no commit antes do push, mas se o push já foi realizado vai ter um problema na hora de tentar fazer o push de forma tradicioinal porque vai ter uma divergência entre o histórico do repositório local e do remoto, para resolver essa situação é necessário fazer `git push --force` ou `git push -f` para forçar a sincronização do local do remoto e sobrescrever o que está online. 
+
+`git commit -am "mensagem"` -> Faz o git add . junto com commit.
+`git rm -rf --cached` -> Limpar o cache de forma local caso o .gitingore não esteja ignorando os arquivos.
+
+Não é recomendado usar o `git push -f` porque ele pode sobrescrever o trabalho dos outros, um comando recomendado é usar `git oush --force-with-lease` que confere se o repositório lcoal está sincronizado com o online e evita de apagar o trabalho dos outros se fizer o `git push -f` direto.  
+
+
+## Dia 7 - Deploy | Client | Server
+1. Conexão com a Vercel
+2. Importação do repositório
+3. Primeira versão no ar
+4. URLs permanentes e unicas 
+
+Continous Deployment -> Automatização do Deploy (CD)  
+Relação Client - Server.
+
+Cliente pede algo, servidor entrega algo.   
+A distância geografica entre cliente e servidor é importante ser pensada porque a partir da distância podem ter dificuldades ou perdas de informação na hora de realizar a comunicação.  
+
+proxy é um servidor intermediário na comunicação entre um cliente e um servidor. 
+
+Continuos Integration -> Uma ferramenta especializada para fazer conferências no código e testes, se tudo aprovado faz o envio para o build e deploy do projeto.
+
+Ensinou a criar a conta na vercel sincronizando com o github e autorizando a instação do programa da vercel. Para fazer o deploy do projeto é só clicar no repositório e importar, já como estamos utilizando o next não é preciso fazer nenhuma configuração.
+
+Principle of Least Privilege -> Principio do privilégio minimo, é quando damos somente o necessário de permissão para uma aplicação funcionar, isso faz parte da segurança para evitar de expor dados e servir como um vetor de ataque ao sistema. 
+
+Permitir que a Vercel leia todos os repositórios ou escolher quais vão estar disponíveis de forma manual, escolhendo essa segunda opção é necessário ir nas configurações do github e ir selecionando novos repositórios quando eles forem criados. 
+
+A vercel é interessante porque ela deixa disponível de forma permanente todas as versões que fizemos deploy com uma url única, a última da lista de urls, então quando fazemos alterações é possível ver como estava antes. 
+
+O link centralizado ou o primeiro se for de um deploy antigo é uma url especifica para a branch que vai ser explicada no futuro.
+
+## Dia 8 - Preparando o cérebro 
+Programação Orgânica -> Fazer o projeto aos poucos, dando espaço ao aprendizado, erro e descobertas.  
+
+Programção Impressora 3d -> Tudo ou nada, geralmente um método que acaba desmotivando as pessoas porque muitas vezes vão ter falhas e problemas no meio do caminho, dando a impressão que nós não concluimos nada.   
+
+Eu tenho que ter cudiado com o over engenireng porque se eu ficar complicando demias as coisas nunca vou colher um resultado, isso me faz refletir sobre om eu projeto do sistema de gerenciamento, querendo fazer todas as entidades já completas, isso acaba sendo bem complicado, tentar diminuir o escopo pra ver se sai alguma coisa do papel. 
+
+
+
