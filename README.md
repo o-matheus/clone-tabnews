@@ -125,5 +125,40 @@ Programção Impressora 3d -> Tudo ou nada, geralmente um método que acaba desm
 
 Eu tenho que ter cudiado com o over engenireng porque se eu ficar complicando demias as coisas nunca vou colher um resultado, isso me faz refletir sobre om eu projeto do sistema de gerenciamento, querendo fazer todas as entidades já completas, isso acaba sendo bem complicado, tentar diminuir o escopo pra ver se sai alguma coisa do papel. 
 
+## Dia 9 - Tornar a programação divertida
+
+### Como organizar tarefas?
+Fazer muito com pouco é o caminho, agora vamos entender o porque.  
+
+Vai envolver a questão da eficiênica, fazer poucos movimentos ou processos para atingir os objetivos, dessa forma vamos ter um sentimento de boa recompensa por fazer a ação. 
+
+Um fator importante dessa questão é ter o acompanhamento das atividades, ter definido o que quer fazer do dia e ir marcando as atividades como concluidas quando tiver finalizado.
+
+### Niveis de organização de tarefas:
+Nível 1:  Ser lembrado individualmente  
+Fase com o menor custo de produção, energia gasta para fazer algo e aquecimento, tempo que demora para ver e definir o que precisa ser feito. 
+
+Nível 2:  Ser lembrado em grupo  
+Por exemplo quando se usa um kanban para que um grupo de pessoas acompanhe as tarefas a serem feitas.
+
+Nível 3:  Expandir conhecimento  
+Desenvolver de uma forma detalhada o que e como algo deve ser feito, ferramentas de exemplo Trello | GitHub, cuidado com os cusots de tempo, energia gastos para fazer isso. 
 
 
+Nível 4:  Gerar méticas  
+Mensurar a produtivdade é um processo que vai demandar mais tempo e energia o que torna a tarefa cansativa e dificil já antes de inicia-la. 
+
+### Tudo ou nada
+Trabalhar pouco e ganhar pouco, pode parecer estranha essa frase, mas é o processo de ir fazendo as coisas aos poucos para que não fique enfadadom alkgo fundamental para que consiga executar projetos maiores. 
+
+Issue de insception. `Issue` é um recurso do GitHub para apontar problemas ou criar tarefas dentro de um repositíorio. Exsite uma série de detalhamentos para questão da issue, explorar isso depois. 
+
+O objetivo é quebrar em pequenas tarefas o processo de desenvolvimento ao ponto de ser uma tarefa tão pequena que ela se torne fácil, não gerando o cansaço mental e dando o mesmo sentimento dos videogames de inconcientemente incentivar a fazer mais. 
+
+## Dia 10 - Lidando com a inseguraça
+Tem que trabalhar as vertentes pessoais, profissionais e tecnicas. 
+
+Com o Settings Sync é possível sincronizar as configurações feitas no vsCode e espelhar nos codespaces.
+
+Instalar duas extensões - EditorConfig e Prettier para a estilização do código.   
+`.editorconfig` -> Arquivo que vai estilizar o código, é para ser comitado no repositíorio. 
