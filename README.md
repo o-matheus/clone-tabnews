@@ -175,3 +175,16 @@ Com o Settings Sync é possível sincronizar as configurações feitas no vsCode
 
 Instalar duas extensões - EditorConfig e Prettier para a estilização do código.  
 `.editorconfig` -> Arquivo que vai estilizar o código, é para ser comitado no repositíorio.
+
+Ir nas configurações do vsCode e desabilitar o salvamento automatico, definir o prettier como formatador padrão, definir para o código ser formatado quando salvar.
+Criar os scripts: `lint:check` e `lint:fix` para respectivamente verificar se existe algum arquivo não formatado de acordo com o prettier e fazer a formatação dos arquivos.
+
+A partir da versão 3.0.0 do prettier não precisa mais fazer o `.prettierignore` se os arquivos que você quer ignorar estão no `.gitignore`, mas caso você não deseje formatar um arquivo que não não está no gitignore pode ser importante fazer ele.
+
+## Dia 11 - DNS (Domains Name System)
+
+Os dominios são só um "apelido", os computadores utilizam o endereço de ip do servidor para encaminhar ao site.  
+Computador -> Servidor DNS -> Computador -> Servidor que hospeda o site.  
+A pista rápida está abordado sobre os ataques ddos que os servidores DNS sofreram com o tempo.
+Na primeira aula foi feita uma explicação mais grosseira falando como se o dns fosse um grande dicionairo, banco de dados, que tivesse o nome do site e seu respectivo endereço de ip, porém,na verdade usa uma estrutura diferente.  
+Recursive Resolver é o que ajuda a descobrir o endereço de ip, junto com os root servers do DNS.
