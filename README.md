@@ -181,10 +181,98 @@ Criar os scripts: `lint:check` e `lint:fix` para respectivamente verificar se ex
 
 A partir da versão 3.0.0 do prettier não precisa mais fazer o `.prettierignore` se os arquivos que você quer ignorar estão no `.gitignore`, mas caso você não deseje formatar um arquivo que não não está no gitignore pode ser importante fazer ele.
 
-## Dia 11 - DNS (Domains Name System)
+## Dia 11 - Teoria DNS (Domains Name System)
 
 Os dominios são só um "apelido", os computadores utilizam o endereço de ip do servidor para encaminhar ao site.  
 Computador -> Servidor DNS -> Computador -> Servidor que hospeda o site.  
 A pista rápida está abordado sobre os ataques ddos que os servidores DNS sofreram com o tempo.
 Na primeira aula foi feita uma explicação mais grosseira falando como se o dns fosse um grande dicionairo, banco de dados, que tivesse o nome do site e seu respectivo endereço de ip, porém,na verdade usa uma estrutura diferente.  
 Recursive Resolver é o que ajuda a descobrir o endereço de ip, junto com os root servers do DNS.
+
+## Dia 12 - Prática DNS
+
+Palavras chave: Root Server | TLD | Authoritative Server | Registrant | Registrador | Registry
+
+Registrant - Somos nós que estamos registrando o dominio.  
+Registrador - é serviço que vamos pagar para comprar o domninio do site. Nosso caso registro.br  
+Registry - Responsável por acompanhar os dominios e serve como fonte para os registradores verem a disponibilidade. No Brasil `NIC.br` é o responsável.  
+Serivodr autoritativo -> É onde o site está hospedado.  
+TLD -> Tenho que buscar a defini
+
+[Site DNS](https://www.whatsmydns.net)
+
+O processo para fazer o registro do site é acessar [registro.br](https://registro.br), verificar a disponibilidade do dominio, prosseguir com o login e em seguida com o pagamento.
+
+`dig` -> Comando para fazer requisições diretas e manuais ao DNS, quando colocamos o endereço que atrelamos a vercel `tiadasviagens.com.br` ele vai retornar o ip aonde está armezado, diferente da aula não é mais usando o A 76.76.21.21 da vercel, agora estão usando address dinâmicos.
+
+`GeoDNS` -> Levando em conta a nossa localização se conecta ao IP mais próximo.
+
+## Dia 13 - Status page | SLA |
+
+Teoria McDonalds -> Quebrar a inercia, sugerir qualquer coisa para que a partir disso tenha um debate e as pessoas participem mais.
+
+Não acreditar que um serviço vai ficar acessivel por 100%, se preparar para tentar mitigar os danos.
+SLA -> Service Level Agreement.  
+Status Pages -> Paginas especializadas em acompanhar o funcionamento do serviço
+
+## Dia 14 - Fundação
+
+A arquitetura utilizada é a MVC (Model - View - Controller).  
+PoC -> Prova de Conceito.  
+Ver se é possível fazer, interface básica, não necessariamento com funcionalidades, mas só um estudo da ideia.
+
+MVP -> Minimo produto viavel  
+Avaliar se além de possível atrai algum usuário. Fazer a implementação de forma simples e bem feita da ideia.
+
+Pode existir uma tecnologia perfeita para a solução, mas se não souber trabalhar com ela, criar e modificar de nada adianta, então quando for pesnar qual linguagem construir o software fazer um "custo-beneficio" entre o que a linguagem pode proporcionar e a capacidade das pessoas trabalhar nessa linguagem o ideal é que a pessoa saiba o que está fazendo então nem sempre a melhor stack é o melhor para a realização de um projeto.
+
+O importante é o software ser modificável.
+
+Arquitetura de Software DIFERENTE de Organização das pastas.  
+O que vai definir a arquiteura de software é o escopo dos componentes e a forma de interação entre eles.
+
+Arquitetura simples + Ótima modelagem = Sucesso.
+
+### Estrutura das pastas
+
+```
+📦root/
+├──📂pages/
+│   └──📄index.js
+├──📂models/
+│   ├──📄users.js
+│   ├──📄content.js
+│   └──📄password.js
+├──📂infra/
+│   ├──📄database.js
+│   ├──📂migrations/
+│   └──📂provisioning/
+│       ├──📂staging/
+│       └──📂production/
+└──📂tests/
+
+```
+
+### Milestones
+
+#### Construção
+
+- Criar siate num dominio .com.br
+
+1. Registrar dominio próprio
+2. Configurar servidor de DNS
+
+- Definir estilização de código e configurar editor
+- Programar página em construção
+
+#### Fundação
+
+- Proposta de arquitetura de pastas
+- Testes automatizados
+- Banco de dados (Local)
+- Migrations
+- Continuos Integration
+- Linter de código
+- Linter de Commits
+- Banco de Dados (Homologação e Produção)
+- Tipo de Licença
