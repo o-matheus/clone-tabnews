@@ -276,3 +276,23 @@ Arquitetura simples + Ótima modelagem = Sucesso.
 - Linter de Commits
 - Banco de Dados (Homologação e Produção)
 - Tipo de Licença
+
+## Dia 15 - Testes automatizados
+
+Criação de 3 sub-issues
+
+- Instalar Test Runner
+- Criar um Tesde de Teste
+- Criar um Tesde de Verdade
+
+Jest -> Test Runner escolhido para o Tabnews versão utilizada (29.6.2).  
+Criação de dois scripts:
+
+- "test": `jest`
+- "test:watch": `jest --watch`
+
+`npm i --save-dev jest@29.6.2` -> comando para instalar o jest na mesma versão do curso.
+
+Nessa aula vamos abordar o TDD - Test Driven Development que é uma forma de escrever código onde os testes são feitos antes do código.
+
+Os testes são para validar se o comportamento esperado da aplicação continua mesmo com as mudanças realizadas.
