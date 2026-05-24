@@ -296,3 +296,84 @@ Criação de dois scripts:
 Nessa aula vamos abordar o TDD - Test Driven Development que é uma forma de escrever código onde os testes são feitos antes do código.
 
 Os testes são para validar se o comportamento esperado da aplicação continua mesmo com as mudanças realizadas.
+
+```js
+test("nome do teste", () => {
+  //função que vai ser executada e validar algo do projeto.
+});
+
+/*
+Aqui é um test hardcode, mas o objetivo geral quando fazemos testes é ter uma estrutura onde
+tenha uma valor gerado dinamicamente no expect() e o toBe um valor esperado hardcodede para ver se
+o que foi executado está tendo como resultado algo que se espera. 
+
+Espera que algo tenha um respectivo valor.
+*/
+test("espero que 1 seja 1", () => {
+  expect(1).toBe(1);
+});
+```
+
+[Eloquent JavaScript](https://eloquentjavascript.net) -> Recomendação de livro.
+
+[Curso Java e Ecma - Guanabara](https://www.youtube.com/playlist?list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1) -> Recomendação de curso.
+
+No primeiro momento fizemos primeiro a funcionalidade depois criamos o teste.
+
+```js
+// calcularadora.js
+function somar(a1, a2) {
+  return a1 + a2;
+}
+
+exports.somar = somar; // Fazendo exportação para tornar disponível em outras partes do código.
+
+// calculadora.test.js
+const calculadora = require("../models/calculadora.js"); // Fazendo importação para ser acessível no teste.
+
+test("Espera que 2 + 2 seja 4", () => {
+  const resultado = calculadora.somar(2, 2);
+  expect(resultado).toBe(4);
+});
+```
+
+## Dia 16 - Criação Banco de Dados Local + Testes + Protocolo HTTP
+
+Em um primeiro momento existia a esturutra da piramide de testes:
+
+Unitário -> Integração -> E2E
+
+Só que a problemática desse modelo é que é possível ter 100% de cobertura dos testes unitários e ainda assim ter problemas no software, existem debates mais recentes sobre o aumento da importância dos testes de integração.
+
+A cada passo que é dado em um teste que tenha um escopo maior mais tempo e energia se investe porque ao inves de um teste unitário onde é possível testar se funciona só executando um pequeno trecho de código, quando vamos avançando vamos interligar e testar diferentes partes juntas para ver se o todo funciona.
+
+Em relação as pastas do projeto tiveram algumas alterações.
+
+```
+📦root/
+├──📂pages/
+│   └──📄index.js
+│   └──📂/api
+└──📂tests/
+│   └──📂/unit
+│   └──📂/integration
+
+```
+
+Para a criação de api´s usando o next é usando umas estrutura de pastas e arquivos para criar esses endopoints, em relação aos testes, dentro da pasta `tests` vão ser criadas as pastas `unit` e `integration` para lidar respectivamente com os testes unitários e de integração.
+
+Quando vamos criar uma api vamos ter dois argumentos na função, o request, que é o que é solicitado pelo cliente e o response que é a resposta dada pelo servidor.
+
+```js
+function status(request, response) {
+  response.status(200).json({ texto: "O curso.dev é muito bom :)" }); // Usando o JSON a resposta usa o UTF-8 como charset, usando o send a mensagem pode ficar mal foramtada.
+}
+```
+
+`curl` -> Programa que faz contato com a api via terminal, mostrando mais informações sobre essa conexão.  
+`curl http://localhost:3000/api/status` -> Faz a conexão com o endpoint que criamos a pouco. Adicionando ao final desse comando o `--verbose` ou `-v` vamos ver todas as requisições feitas.
+
+API é composta somente por informação, sem um layout gráfico.
+Vamos mudar a pasta que está salva a api para fazer um versionamento, porque apesar de ela não necessariamente mudar de layout como se muda interfaces visuais, é possível que ocorram mudanças das informações que são transmitidas. Existem dois tipos de alteração `Breaking Change` e `Non-breaking Change`, a diferença entre os dois é que quando ocorrem alterações na api que quebram a integração com o sistema é uma breaking change, quando continua funcionando normal é uma non-breaking change.
+
+Existem duas formas de fazer o versionamento, uma com o URI que ficaria: `api/v1/contents` || `api/v2/contents` e a outra que o versionamento é feito pelo cabeçalho da comunicação, onde lá vai ser feita a definição.
