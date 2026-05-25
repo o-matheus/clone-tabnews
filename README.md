@@ -337,7 +337,7 @@ test("Espera que 2 + 2 seja 4", () => {
 });
 ```
 
-## Dia 16 - Criação Banco de Dados Local + Testes + Protocolo HTTP
+## Dia 16 - Testes + Protocolo HTTP
 
 Em um primeiro momento existia a esturutra da piramide de testes:
 
@@ -377,3 +377,61 @@ API é composta somente por informação, sem um layout gráfico.
 Vamos mudar a pasta que está salva a api para fazer um versionamento, porque apesar de ela não necessariamente mudar de layout como se muda interfaces visuais, é possível que ocorram mudanças das informações que são transmitidas. Existem dois tipos de alteração `Breaking Change` e `Non-breaking Change`, a diferença entre os dois é que quando ocorrem alterações na api que quebram a integração com o sistema é uma breaking change, quando continua funcionando normal é uma non-breaking change.
 
 Existem duas formas de fazer o versionamento, uma com o URI que ficaria: `api/v1/contents` || `api/v2/contents` e a outra que o versionamento é feito pelo cabeçalho da comunicação, onde lá vai ser feita a definição.
+
+## Dia 17 - Banco de Dados
+
+Palavras chave: Banco de dados relacional, serveless, pool, PostgreSQL, MySQL, DBMS, Query, Migrations, Continuos Integration, Docker, Dockerfile, Image, Container, Dockerhub, Test Runners, Http codes, Exit codes, SQL, NoSQL, Temporal, Espacial, Transaction, Lambdas, AWS, Sequelize,
+
+Foi escolhido o Postgres (DBMS) e os modulos pg(Query) e node-pg-migrate(Migrations).
+
+A escolha do banco de dados envolve pensar no DBMS - Data Base Management System, como as Query vão ser feitas e organizar as Migrations.
+
+Breve História sobre a execução de aplicações e da frase "na minha máquina funciona", nesse contexto vai abordado de como no passado os problemas aconteciam, por conta de ambientes diferentes estarem executando uma mesma aplicação o que gerava respostas diferentes para uma mesma ação e uma ´serie de divergências na execução e reprodução, os passos para se resolver esse problema foram seguindo na criação de máquians virtuais para criar ambientes isolados de forma replicaveis, para que facilitasse a repetição de ambiente, mas que acabava consumindo muitos recursos e tempo para a configuração, depois a criação de ferramentas que facilitavam a configuração por meio de um arquivo base que era compartilhado que ajuda na questão da configuração, mas que ainda causa um grande gasto de recursos pela necessidade de criar diferentes ambientes para a execução das aplicações, até que foi criado o Docker, que fez uma abstração de recursos existentes no linux os "namespaces" e "cgroups" que aproveitam o sistema operacional instalado no sistema e criavam compartimentos isolados de forma rápida, prática e eficiente, tornando o nivelamento de ambientes para execução de tarefas melhor e permitindo uma avanço nessa questão.
+
+Vamos criar agora o Banco de Dados e no futuro o `Mailcatcher` que simula um servidor de emails.
+`compose.yaml` -> Arquivo de configuração do Docker.
+
+```yaml
+# O yaml é baseado em json.
+# Hierarquia definida por identação
+# Serviços que vamos utilizar, aqui vamos dizer qual é vamos utilzar e de onde estamos retirnando ele.
+services:
+  database:
+    image: "postgres:16.0-alpine3.18"
+    environment:
+      POSTGRES_PASSWORD: "local_password" # Única variável obrigatória para fazer rodar o postgres.
+```
+
+Quando vamos infomrar de onde o serviço do docker está sendo retirado, podemos fazer usando o Dockerfile ou Docker Hub para fornecer a imagem.
+Dockerfile são os comandos que vão ser utilizados para gerar o ambiente virtual, para que ele seja executado é necessário compilar para gerar uma imagem. Container é o lugar onde a imagem está sendo executada. Dockerhub é o repositório onde fica as imagens.
+
+Exit Codes -> `0`: Sucesso | `255`: Erro (Qualquer coisa acima de 0);
+
+Comandos para instalar libpq no mac.
+
+```
+  brew doctor
+
+    brew update
+
+    brew install libpq
+
+    brew link --force libpq
+```
+
+`porta 5433` -> Tive que trocar a porta do host pq eu tenho outra instância do postgres sendo utilizada na porta 5432.
+
+`docker compose up` -> Comando para criar e iniciar um container.
+`docker ps` -> Lista processos(containers) ativos no docker.
+`docker ps -a` -> Lista processos no docker.
+`docker logs <nome_container>` -> Ver logos do container
+`docker compose up --detach | -d` -> Criar e iniciar container rodando em segundo plano.
+`docker compose up -d --force-recreate` -> Forçar atualização do container.
+
+`psql --host=localhost --username=postgres --port=5433 ` -> Comando para acessar nosso banco de dados via terminal com o psql.
+`/q` -> Sair do psql
+
+Criação da pasta infra para armazenar os arquivos relacionados a isso.
+`docker compose -f infra/compose.yaml` -> Criar ou iniciar container dentro de uma pasta especifica.
+
+No futuro também vamos trocar o local da senha do banco para deixar a informação mais protegida e deixar mais eficiente o fluxo de trabalho com a integração das variáveis de ambiente.
