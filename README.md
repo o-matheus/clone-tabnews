@@ -468,7 +468,7 @@ export default {
 É importante deixar as camadas da aplicação stateless.
 Existe um módulo chamado `dotenv` que pega o que escrevemos no arquivo `.env` e passar para o process.env da aplicação, sem ter que passar para o terminal as informações.
 
-## Dia 19 -
+## Dia 19 - Variáveis de ambiente
 
 É recomendado não fazer o commit do `.env` pelo `dotenv`, mas o `next` em sua documentação incentiva que seja feito o commit, agora vamos começar a estudar e entender que existem vários tipos e precedências para os arquivos de variáveis de ambiente e como injetalos na aplicação.
 
@@ -483,3 +483,21 @@ Escala de prioridade:
 A grande questão é não colocar dados sensíveis nesses lugares, mas se você atribuir um valor padrão nessas variáveis que não sejam compostos por informações sensíveis é sucesso.
 
 `git mv <nome_arquivo> <novo_nome>` -> Renomear arquivos e como estão registrados no git.
+`code <nome_arquivo.tipo>` -> para criar um arquivo usando o terminal.
+
+[Artigo para remover dados sensíveis](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
+
+Root Path -> Definindo a localização da página raiz para não ter que trabalhar com caminhos relativos. Utilização do `jsconfig.json` nesse projeto para definir o caminho absoluto do projeto.
+`import database from "../../../../infra/database.js";`
+
+Configuração para o `jsconfig` e definir uma baseUrl
+
+```js
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "baseUrl": "."
+  }
+}
+
+```
