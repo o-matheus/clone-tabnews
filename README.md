@@ -468,7 +468,7 @@ export default {
 É importante deixar as camadas da aplicação stateless.
 Existe um módulo chamado `dotenv` que pega o que escrevemos no arquivo `.env` e passar para o process.env da aplicação, sem ter que passar para o terminal as informações.
 
-## Dia 19 - Variáveis de ambiente
+## Dia 19 - Variáveis de ambiente || jsconfig || Scripts
 
 É recomendado não fazer o commit do `.env` pelo `dotenv`, mas o `next` em sua documentação incentiva que seja feito o commit, agora vamos começar a estudar e entender que existem vários tipos e precedências para os arquivos de variáveis de ambiente e como injetalos na aplicação.
 
