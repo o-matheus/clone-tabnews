@@ -440,3 +440,46 @@ No futuro também vamos trocar o local da senha do banco para deixar a informaç
 
 `npm i pg@8.11.3` -> Instalação do pg para fazer a conexão com o postgres.
 `npm run test:watch` -> Script executado foi alterado para `jest --watchAll` para que todos os testes sejam realizados, mesmo que não tenha nenhuma alteração no commit em relação ao último.
+
+```js
+// Estrutura básica para a conexão com o postgres
+import { Client } from "pg";
+
+async function query(queryObject) {
+  const client = new Client({
+    // Informações da database
+    host: "localhost",
+    port: 5433,
+    user: "postgres",
+    database: "postgres",
+    password: "local_password",
+  });
+  await client.connect();
+  const result = await client.query(queryObject);
+  await client.end();
+  return result;
+}
+
+export default {
+  query: query,
+};
+```
+
+É importante deixar as camadas da aplicação stateless.
+Existe um módulo chamado `dotenv` que pega o que escrevemos no arquivo `.env` e passar para o process.env da aplicação, sem ter que passar para o terminal as informações.
+
+## Dia 19 -
+
+É recomendado não fazer o commit do `.env` pelo `dotenv`, mas o `next` em sua documentação incentiva que seja feito o commit, agora vamos começar a estudar e entender que existem vários tipos e precedências para os arquivos de variáveis de ambiente e como injetalos na aplicação.
+
+Escala de prioridade:
+
+1. process.env
+2. .env.development
+3. .env
+
+É possível diretamente na vercel configurar as variáveis de ambiente que são utilizadas, tendo precedência sobre qualquer arquivo de variáveis de ambiente no projeto.
+
+A grande questão é não colocar dados sensíveis nesses lugares, mas se você atribuir um valor padrão nessas variáveis que não sejam compostos por informações sensíveis é sucesso.
+
+`git mv <nome_arquivo> <novo_nome>` -> Renomear arquivos e como estão registrados no git.
