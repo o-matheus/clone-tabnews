@@ -432,6 +432,11 @@ Comandos para instalar libpq no mac.
 `/q` -> Sair do psql
 
 Criação da pasta infra para armazenar os arquivos relacionados a isso.
-`docker compose -f infra/compose.yaml` -> Criar ou iniciar container dentro de uma pasta especifica.
+`docker compose -f infra/compose.yaml up -d` -> Criar ou iniciar container dentro de uma pasta especifica.
 
 No futuro também vamos trocar o local da senha do banco para deixar a informação mais protegida e deixar mais eficiente o fluxo de trabalho com a integração das variáveis de ambiente.
+
+## Dia 18 - Criação da database.js
+
+`npm i pg@8.11.3` -> Instalação do pg para fazer a conexão com o postgres.
+`npm run test:watch` -> Script executado foi alterado para `jest --watchAll` para que todos os testes sejam realizados, mesmo que não tenha nenhuma alteração no commit em relação ao último.
