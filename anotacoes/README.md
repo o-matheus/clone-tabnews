@@ -8,6 +8,7 @@ O número do arquivo corresponde ao dia do curso. As datas de estudo ficam dentr
 | --- | --- | --- |
 | 001 | concluído | [Dia 001](dia-001.md) |
 | 002 | concluído | [Dia 002](dia-002.md) |
+| 003 | concluído | [Dia 003](dia-003.md) |
 
 Status disponíveis: **não iniciado**, **em andamento** e **concluído**.
 
